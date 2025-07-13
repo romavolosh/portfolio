@@ -205,8 +205,6 @@ document
     }
   });
 
-// Settings window toggle
-
 document.getElementById('settingsBtn').addEventListener('click', function () {
   const settingsWindow = document.querySelector('.settingsWindow');
   const settingsBtn = document.getElementById('settingsBtn');
@@ -227,14 +225,11 @@ document.getElementById('settingsClose').addEventListener('click', function () {
   if (settingsWindow) settingsWindow.style.display = 'none';
   if (settingsBtn) settingsBtn.style.backgroundColor = 'transparent';
 });
-
-// Switch background
 const bgOptions = document.querySelectorAll('.bg-option');
 bgOptions.forEach(function(option) {
   option.addEventListener('click', function() {
     const bg = option.getAttribute('data-bg');
     document.documentElement.style.backgroundImage = `url('./img/bg/${bg}')`;
-    // Меняем цвет окон в зависимости от выбранного фона
     let winColor = 'rgba(0, 72, 124, 0.5)';
     let headerColor = 'rgba(0, 72, 124)';
     if (bg === 'blue-bg.svg') {
