@@ -73,53 +73,52 @@ html {
   margin-bottom: 10px;
 }
 
-.rightPart img{
-    height: 100%;
+.rightPart img {
+  height: 100%;
 }
 
-.rightPart{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 2px;
+.rightPart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
 }
 
-.rightPart button{
-    padding: 3px;
-    cursor: pointer;
+.rightPart button {
+  padding: 3px;
+  cursor: pointer;
 }
 
-.leftPart{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.leftPart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.terminalWindow input{
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid rgb(255, 255, 255);
-    color: white;
-    width: 90%;
-    height: 23px;
-    font-size: large;
+.terminalWindow input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  color: white;
+  width: 90%;
+  height: 23px;
+  font-size: large;
 }
 
-.terminalWindow input:focus{
-    outline: none;
+.terminalWindow input:focus {
+  outline: none;
 }
 
 .input-line {
-    width: auto;
+  width: auto;
 }
 
 .windowHeader img {
   height: 40px;
   margin-right: 10px;
 }
-
 
 .contactWindow {
   width: 400px;
@@ -131,4 +130,16 @@ html {
   font-family: sans-serif;
   position: fixed;
   display: none;
+}
+
+.settingsWindow {
+  display: none;
+  width: 400px;
+  height: 300px;
+  border-radius: 8px;
+  background-color: rgba(0, 72, 124, 0.5);
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+  position: fixed;
 }

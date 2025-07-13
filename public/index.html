@@ -18,6 +18,9 @@
       <button class="taskbarBtn" id="contactBtn">
         <img src="./img/icons/contact_icon.png" alt="contact" />
       </button>
+      <button class="taskbarBtn" id="settingsBtn">
+        <img src="./img/icons/settings_icon.png" alt="settings" />
+      </button>
     </div>
 
     <div class="terminalWindow">
@@ -53,6 +56,25 @@
       </div>
       <div class="output">
         <p>Contact me at: <a href="mailto:roman@example.com">roman@example.com</a></p>
+      </div>
+    </div>
+
+    <div class="settingsWindow">
+      <div class="windowHeader">
+        <div class="leftPart">
+          <img src="./img/icons/settings_icon.png" alt="" />Settings
+        </div>
+        <div class="rightPart">
+          <button id="settingsClose"><i class="bi bi-x-lg"></i></button>
+        </div>
+      </div>
+      <div style="padding:20px;">
+        <div>Choose background:</div>
+        <div style="display:flex; gap:10px; margin-top:10px;">
+          <button class="bg-option" data-bg="blue-bg.svg" style="background:#1e90ff; width:40px; height:40px; border-radius:6px; border:none; cursor:pointer;"></button>
+          <button class="bg-option" data-bg="green-bg.svg" style="background:#2ecc40; width:40px; height:40px; border-radius:6px; border:none; cursor:pointer;"></button>
+          <button class="bg-option" data-bg="orange-bg.svg" style="background:#ff9800; width:40px; height:40px; border-radius:6px; border:none; cursor:pointer;"></button>
+        </div>
       </div>
     </div>
 

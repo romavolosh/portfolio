@@ -93,6 +93,47 @@ interact('.contactWindow')
     ],
   });
 
+interact('.settingsWindow')
+  .resizable({
+    edges: { left: true, right: true, bottom: true, top: true },
+    listeners: {
+      move(event) {
+        var target = event.target;
+        var x = parseFloat(target.getAttribute('data-x')) || 0;
+        var y = parseFloat(target.getAttribute('data-y')) || 0;
+
+        target.style.width = event.rect.width + 'px';
+        target.style.height = event.rect.height + 'px';
+
+        x += event.deltaRect.left;
+        y += event.deltaRect.top;
+
+        target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+        target.setAttribute('data-x', x);
+        target.setAttribute('data-y', y);
+      },
+    },
+    modifiers: [
+      interact.modifiers.restrictEdges({
+        outer: 'body',
+      }),
+      interact.modifiers.restrictSize({
+        min: { width: 200, height: 100 },
+      }),
+    ],
+    inertia: true,
+  })
+  .draggable({
+    listeners: { move: window.dragMoveListener },
+    inertia: true,
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'body',
+        endOnly: true,
+      }),
+    ],
+  });
+
 document.getElementById("terminalBtn").addEventListener("click", function () {
   const terminal = document.querySelector(".terminalWindow");
   const taskbarBtn = document.querySelector(".taskbarBtn");
@@ -163,3 +204,56 @@ document
       e.target.value = "";
     }
   });
+
+// Settings window toggle
+
+document.getElementById('settingsBtn').addEventListener('click', function () {
+  const settingsWindow = document.querySelector('.settingsWindow');
+  const settingsBtn = document.getElementById('settingsBtn');
+  if (settingsWindow) {
+    const isVisible = settingsWindow.style.display === 'block';
+    settingsWindow.style.display = isVisible ? 'none' : 'block';
+    if (settingsBtn) {
+      settingsBtn.style.backgroundColor = isVisible
+        ? 'transparent'
+        : 'rgba(255, 255, 255, 0.205)';
+    }
+  }
+});
+
+document.getElementById('settingsClose').addEventListener('click', function () {
+  const settingsWindow = document.querySelector('.settingsWindow');
+  const settingsBtn = document.getElementById('settingsBtn');
+  if (settingsWindow) settingsWindow.style.display = 'none';
+  if (settingsBtn) settingsBtn.style.backgroundColor = 'transparent';
+});
+
+// Switch background
+const bgOptions = document.querySelectorAll('.bg-option');
+bgOptions.forEach(function(option) {
+  option.addEventListener('click', function() {
+    const bg = option.getAttribute('data-bg');
+    document.documentElement.style.backgroundImage = `url('./img/bg/${bg}')`;
+    // Меняем цвет окон в зависимости от выбранного фона
+    let winColor = 'rgba(0, 72, 124, 0.5)';
+    let headerColor = 'rgba(0, 72, 124)';
+    if (bg === 'blue-bg.svg') {
+      winColor = 'rgba(0, 72, 124, 0.5)';
+      headerColor = 'rgba(0, 72, 124)';
+    }
+    if (bg === 'green-bg.svg') {
+      winColor = 'rgba(46, 204, 64, 0.5)';
+      headerColor = 'rgba(46, 204, 64)';
+    }
+    if (bg === 'orange-bg.svg') {
+      winColor = 'rgba(255, 152, 0, 0.5)';
+      headerColor = 'rgba(255, 152, 0)';
+    }
+    document.querySelectorAll('.terminalWindow, .contactWindow, .settingsWindow').forEach(function(win) {
+      win.style.backgroundColor = winColor;
+    });
+    document.querySelectorAll('.windowHeader').forEach(function(header) {
+      header.style.backgroundColor = headerColor;
+    });
+  });
+});
