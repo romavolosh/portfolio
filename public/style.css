@@ -1,0 +1,43 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-image: url(./img/bg/blue-bg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body,html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.taskbar {
+    background-color: rgba(240, 248, 255, 0.192);
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+}
+
+.resize-drag {
+  width: 120px;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 1rem;
+  background-color: #29e;
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+  position: relative;
+
+  touch-action: none;
+
+  /* This makes things *much* easier */
+  box-sizing: border-box;
+}
