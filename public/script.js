@@ -1,5 +1,22 @@
 import interact from "https://cdn.interactjs.io/v1.9.20/interactjs/index.js";
 
+function update(){
+  let DateObj = new Date();
+  let hours = DateObj.getHours();
+  let minutes = DateObj.getMinutes();
+  let seconds = DateObj.getSeconds();
+  if (hours < 10) hours = '0' + hours;
+  if (minutes < 10) minutes = '0' + minutes;
+  if (seconds < 10) seconds = '0' + seconds;
+  var taskClock = document.getElementById('clock');
+  if (taskClock) {
+    taskClock.textContent = `${hours}:${minutes}:${seconds}`;
+  }
+  setTimeout(update, 1000);
+}
+update();
+
+
 const apiUrl = 'https://api.github.com/users/romavolosh';
 
 fetch(apiUrl)
