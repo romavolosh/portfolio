@@ -22,6 +22,9 @@
       <button class="taskbarBtn" id="settingsBtn">
         <img src="./img/icons/settings_icon.png" alt="settings" />
       </button>
+      <button class="taskbarBtn" id="githubBtn">
+        <img src="./img/icons/github.png" alt="github" />
+      </button>
     </div>
 
     <div class="terminalWindow">
@@ -78,6 +81,26 @@
         </div>
       </div>
     </div>
+
+    <div class="githubWindow">
+      <div class="windowHeader">
+        <div class="leftPart">
+          <img src="./img/icons/github.png" alt="" />GitHub
+        </div>
+        <div class="rightPart">
+          <button id="githubClose"><i class="bi bi-x-lg"></i></button>
+        </div>
+      </div>
+      <div class="output">
+        <p>Hi, this is my GitHub: </p><span id="git_url"></span>
+        <div class="git_flex"><p>Username: </p><span id="git_username"></span></div>
+        <div class="git_flex"><p>Name: </p><span id="git_name"></span></div>
+        <div class="git_flex"><p>Bio: </p><span id="git_bio"></span></div>
+        <div class="git_flex"><p>Public repos: </p><span id="git_repos"></span></div>
+        <div class="git_flex"><p>Followers: </p><span id="git_followers"></span></div>
+        <div class="git_flex"><p>Following: </p><span id="git_following"></span></div>
+        <div class="git_flex"><p>Location: </p><span id="git_location"></span></div>
+      </div>
 
     <script type="module" src="./script.js"></script>
   </body>
