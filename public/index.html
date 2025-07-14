@@ -73,9 +73,21 @@
       </div>
       <div class="output">
         <p>
-          Contact me at:
-          <a href="mailto:roman@example.com">roman@example.com</a>
+          Contact me
         </p>
+          <form class="formWin" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="33214875-456f-425f-8fa9-7efd8061e52b">
+    <span>Your Name</span>
+    <input type="text" name="name" required placeholder="Enter your name" autocomplete="on"/>
+    <span>Your Email</span>
+    <input type="email" name="email" required placeholder="Enter your email" autocomplete="on"/>
+    <span>Message</span>
+    <textarea name="message" required placeholder="Enter your message" autocomplete="on"></textarea>
+
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+    <button type="submit">Submit Form</button>
+</form>
+
       </div>
     </div>
 

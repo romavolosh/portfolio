@@ -83,6 +83,44 @@ html {
 
 #map { height: 100%;}
 
+.formWin{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.formWin > input {
+  width: 50%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.formWin > textarea{
+  width: 50%;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  margin-bottom: 20px;
+  resize: none;
+}
+
+.formWin > button {
+  width: 50%;
+  height: 30px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(39, 93, 131);
+  color: white;
+  font-size: large;
+  cursor: pointer;
+}
+
 .mapWindow{
   width: 600px;
   height: 400px;
@@ -171,6 +209,7 @@ html {
   position: fixed;
   display: none;
   border: 2px solid rgba(255, 255, 255, 0.5);
+  text-align: center;
 
 }
 
