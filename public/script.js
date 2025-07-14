@@ -247,6 +247,13 @@ document.getElementById("terminalClose").addEventListener("click", function () {
   if (taskbarBtn) taskbarBtn.style.backgroundColor = "transparent";
 });
 
+document.getElementById("githubClose").addEventListener("click", function () {
+  const githubWindow = document.querySelector(".githubWindow");
+  const taskbarBtn = document.getElementById("githubBtn");
+  if (githubWindow) githubWindow.style.display = "none";
+  if (taskbarBtn) taskbarBtn.style.backgroundColor = "transparent";
+});
+
 document.getElementById('contactBtn').addEventListener('click', function () {
   const contactWindow = document.querySelector('.contactWindow');
   const contactBtn = document.getElementById('contactBtn');
