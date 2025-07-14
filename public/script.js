@@ -49,6 +49,12 @@ fetch(apiUrl)
     console.error('Error:', error);
   });
 
+  var map = L.map('map').setView([51.505, -0.09], 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
 
 
 function dragMoveListener(event) {
@@ -226,6 +232,62 @@ interact(".githubWindow")
     ],
   });
 
+  interact(".mapWindow")
+  .resizable({
+    edges: { left: true, right: true, bottom: true, top: true },
+    listeners: {
+      move(event) {
+        var target = event.target;
+        var x = parseFloat(target.getAttribute("data-x")) || 0;
+        var y = parseFloat(target.getAttribute("data-y")) || 0;
+
+        target.style.width = event.rect.width + "px";
+        target.style.height = event.rect.height + "px";
+
+        x += event.deltaRect.left;
+        y += event.deltaRect.top;
+
+        target.style.transform = "translate(" + x + "px," + y + "px)";
+        target.setAttribute("data-x", x);
+        target.setAttribute("data-y", y);
+      },
+    },
+    modifiers: [
+      interact.modifiers.restrictEdges({
+        outer: "body",
+      }),
+      interact.modifiers.restrictSize({
+        min: { width: 350, height: 150 },
+      }),
+    ],
+    inertia: true,
+  })
+  .draggable({
+    listeners: { move: window.dragMoveListener },
+    inertia: true,
+    allowFrom: ':not(#map)', // Окно можно перемещать только если не на карте
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: "body",
+        endOnly: true,
+      }),
+    ],
+  });
+
+document.getElementById("mapBtn").addEventListener("click", function () {
+  const mapWindow = document.querySelector(".mapWindow");
+  const taskbarBtn = document.getElementById("mapBtn");
+  if (mapWindow) {
+    const isVisible = mapWindow.style.display === "block";
+    mapWindow.style.display = isVisible ? "none" : "block";
+    if (taskbarBtn) {
+      taskbarBtn.style.backgroundColor = isVisible
+        ? "transparent"
+        : "rgba(255, 255, 255, 0.205)";
+    }
+  }
+});
+
 document.getElementById("terminalBtn").addEventListener("click", function () {
   const terminal = document.querySelector(".terminalWindow");
   const taskbarBtn = document.querySelector(".taskbarBtn");
@@ -273,6 +335,13 @@ document.getElementById('contactClose').addEventListener('click', function () {
   const contactBtn = document.getElementById('contactBtn');
   if (contactWindow) contactWindow.style.display = 'none';
   if (contactBtn) contactBtn.style.backgroundColor = 'transparent';
+});
+
+document.getElementById('mapClose').addEventListener('click', function () {
+  const mapWindow = document.querySelector('.mapWindow');
+  const mapBtn = document.getElementById('mapBtn');
+  if (mapWindow) mapWindow.style.display = 'none';
+  if (mapBtn) mapBtn.style.backgroundColor = 'transparent';
 });
 
 document.getElementById("githubBtn").addEventListener("click", function () {
